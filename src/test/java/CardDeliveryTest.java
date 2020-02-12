@@ -36,9 +36,9 @@ public class CardDeliveryTest {
         city.setValue(registrationForData.getCity());
         lastNameAndName.setValue(registrationForData.getFullName());
         number.setValue(registrationForData.getMobilNumber());
+        checkMark.click();
         date.doubleClick().sendKeys(Keys.BACK_SPACE);
         date.setValue(futureDay);
-        checkMark.click();
         button.click();
         succsesNotif.waitUntil(Condition.visible, 15000);
         succsesNotif.shouldHave(text("Успешно!"));
@@ -49,6 +49,7 @@ public class CardDeliveryTest {
         date.setValue(newFutureDay);
         button.click();
         repeatNotif.waitUntil(Condition.visible, 15000);
+        repeatNotif.shouldHave(text("Необходимо подтверждение"));
         repeatButton.click();
         repeatNotif.waitUntil(Condition.exist, 15000);
         succsesNotif.shouldHave(text("Встреча успешно запланирована на " + newFutureDay));
